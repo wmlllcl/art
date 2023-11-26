@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "ipfs-express",
+  "name": "nft-market-backend",
   "version": "1.0.0",
   "description": "A NodeJS IPFS App",
   "main": "app.js",
