@@ -1,4 +1,3 @@
-import fs from 'fs';
 import express from 'express';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
@@ -15,7 +14,6 @@ app.use(fileUpload())
 
 app.get('/', (req,res) => {
     res.render('home')
-    console.log('This is the home webpage')
 })
 
 app.post('/upload', (req, res) => {
