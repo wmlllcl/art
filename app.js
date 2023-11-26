@@ -45,13 +45,13 @@ app.post('/upload', (req, res) => {
         const jsonResult = await addJSONToIPFS(metadata)
         console.log('Metadata added to IPFS:', jsonResult.cid.toString());
 
-        mint(process.env.ADDRESS, 'https://ipfs.io/ipfs' + jsonResult.cid.toString())
+        await mint(process.env.ADDRESS, 'https://ipfs.io/ipfs' + jsonResult.cid.toString())
 
         res.json({ 
             message: 'File uploaded successfully.', 
             metadata
         });
-    })
+    });
 });
 
 const HOST = process.env.HOST 
