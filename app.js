@@ -27,6 +27,9 @@ app.post('/upload', (req, res) => {
 
     const title = req.body.title
     const description = req.body.description
+    const address = req.body.address
+
+    console.log(title, description, address)
 
     file.mv(filePath, async (err) => {
         if (err) {
@@ -40,12 +43,13 @@ app.post('/upload', (req, res) => {
         const metadata = {
             title,
             description,
-            image: 'https://ipfs.io/ipfs' + fileResult.cid.toString()
+            image: 'http://127.0.0.1:8080/ipfs/' + fileResult.cid.toString()
         }
         const jsonResult = await addJSONToIPFS(metadata)
         console.log('Metadata added to IPFS:', jsonResult.cid.toString());
 
-        await mint(process.env.ADDRESS, 'https://ipfs.io/ipfs' + jsonResult.cid.toString())
+        const userAddress = address? address: process.env.ADDRESS;
+        await mint(userAddress, 'http://127.0.0.1:8080/ipfs/' + jsonResult.cid.toString())
 
         res.json({ 
             message: 'File uploaded successfully.', 
