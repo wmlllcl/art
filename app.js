@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 import { addFileToIPFS, addJSONToIPFS } from './ipfs-uploader.js';
 import { mint } from './nft-minter.js';
+
 import dotenv from 'dotenv';
 dotenv.config("./.env");
 
